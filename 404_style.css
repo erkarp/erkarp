@@ -1,0 +1,27 @@
+.not-found {
+    background-color: transparent;
+    border: 1px solid rgba(17 17 17 .1);
+}
+
+.not-found h1,
+.not-found .text-link {
+    text-shadow: white 0 0 10px;
+}
+
+.text-link {
+    font-family: 'Quicksand', monospace;
+    text-decoration: underline;
+}
+
+video {
+    position: absolute;
+    border-radius: 50%;
+    margin: -5vmin;
+    z-index: -1;
+}
+
+@media (max-height: 435px), (max-width: 435px) {
+    video {
+        display: none;
+    }
+}

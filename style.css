@@ -15,7 +15,8 @@ h1 {
 	line-height: 0.8em;
 	letter-spacing: -1px;
 	font-family: 'Allura', cursive;
-	text-shadow: rgb(200, 190, 168) 0px 0px 20px;
+	text-shadow: rgb(200, 190, 168) 0 0 20px;
+	cursor: default;
 }
 h2 {
 	font-size: 1.1em;
@@ -43,7 +44,8 @@ a {
 	text-decoration: none;
 	white-space: nowrap;
 }
-main, #main {
+.main {
+	position: relative;
 	width: 50vmax;
 	height: 50vmax;
 	margin: auto;
@@ -64,7 +66,8 @@ main, #main {
 	h1 {
 		font-size: 3.7em;
 	}
-	main, #main {
+	.main,
+	.not-found {
 		padding: 0;
 		background: none;
 		box-shadow: none;
@@ -75,7 +78,8 @@ main, #main {
 	h1 {
 		font-size: 3.7em;
 	}
-	main, #main {
+	.main,
+	.not-found {
 		padding: 0;
 		background: none;
 		box-shadow: none;

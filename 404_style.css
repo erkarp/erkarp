@@ -1,6 +1,6 @@
 .not-found {
     background-color: transparent;
-    border: 1px solid rgba(17 17 17 .1);
+    border: 1px solid rgba(17, 17, 17, .1);
 }
 
 .not-found h1,
@@ -21,6 +21,9 @@ video {
 }
 
 @media (max-height: 435px), (max-width: 435px) {
+    .not-found {
+        border: none;
+    }
     video {
         display: none;
     }

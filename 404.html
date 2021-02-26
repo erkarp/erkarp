@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Emily Karp | Front End Web Developer</title>
+	<title>Emily Karp | Software Engineer</title>
 	<meta name="description" content="Emily Karp is a front-end web developer, designer, and Wordpress expert in New York and New Jersey">
 	<meta name="keywords" content="websites, web developer, HTML5, CSS3, JavaScript, web design, SEO, custom websites">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="./404_style.css">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand:300,400">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allura">
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 	<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,12 +26,69 @@
 <body>
 	<main class="main not-found">
 		<h1 title="This is not my dog.">404</h1>
-		<p>
-			<a class="text-link" href="/">Go to homepage</a>
-		</p>
+
+		<h2><a class="text-link" href="/">Go to homepage</a></h2>
+		<p class="controls-trigger text-link" onclick="manualVideoMode(this)">Hear the puppy squeak</p>
+
+		<ul id="controls" class="controls" hidden>
+			<li id="play"><a href="javascript:v.play()"><i class="fas fa-play"></i></a></li>
+			<li id="pause"><a href="javascript:v.pause()"><i class="fas fa-pause"></i></a></li>
+
+			<li id="mute"><a href="javascript:mute()"><i class="fas fa-volume-up"></i></a></li>
+			<li id="unmute" style="display: none;">
+				<a href="javascript:unmute()"><i class="fas fa-volume-mute"></i></a>
+			</li>
+
+			<li id="volume">
+				<input onchange="updateVolume(this)" type="range" min="0" max="1" value=".5" step=".05">
+			</li>
+		</ul>
 		<video width="100%" height="100%" poster="./smol_good_boi.png" autoplay="autoplay" loop="" muted="">
 			<source src="./smol_good_boi.mp4" type="video/mp4">
 		</video>
 	</main>
+	<script>
+		const v = document.getElementsByTagName('video')[0];
+
+		function manualVideoMode (elem) {
+			v.pause();
+
+			v.muted = false;
+			v.autoplay = false;
+
+			elem.style['display'] = 'none';
+			document.getElementById('controls').style['display'] = 'block';
+		}
+
+		function mute () {
+			v.muted = true;
+			document.getElementById('unmute').style['display'] = 'inline-block';
+			document.getElementById('mute').style['display'] = 'none';
+			document.getElementById('volume').children[0].disabled = true;
+		}
+
+		function unmute () {
+			v.muted = false;
+			document.getElementById('mute').style['display'] = 'inline-block';
+			document.getElementById('unmute').style['display'] = 'none';
+			document.getElementById('volume').children[0].disabled = false;
+		}
+
+		function updateVolume (elem) {
+			v.volume = elem.value;
+		}
+
+		(function () {
+			v.onplay = function () {
+				document.getElementById('pause').style['display'] = 'inline-block';
+				document.getElementById('play').style['display'] = 'none';
+			};
+
+			v.onpause = function () {
+				document.getElementById('pause').style['display'] = 'none';
+				document.getElementById('play').style['display'] = 'inline-block';
+			};
+		})();
+	</script>
 </body>
 </html>

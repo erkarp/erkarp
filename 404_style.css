@@ -11,6 +11,7 @@
 .text-link {
     font-family: 'Quicksand', monospace;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 video {
@@ -24,6 +25,8 @@ video {
     .not-found {
         border: none;
     }
+    .controls-trigger,
+    .controls,
     video {
         display: none;
     }
